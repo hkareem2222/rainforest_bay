@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @product.condition %>
+</p>
+
+<p>
+  <strong>Starting bid:</strong>
+  <%= @product.starting_bid %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @product.location %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @product.quantity %>
+</p>
+
+<p>
+  <strong>Buy now price:</strong>
+  <%= @product.buy_now_price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
