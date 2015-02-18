@@ -19,7 +19,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.image %></td>
+        <td><%= image_tag product.image.url (:medium) %></td>
         <td><%= link_to product.name, product %></td>
         <td><%= product.condition %></td>
         <td><%= product.starting_bid %></td>

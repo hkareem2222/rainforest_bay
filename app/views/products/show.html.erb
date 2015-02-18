@@ -1,5 +1,8 @@
 <%= link_to 'Back', products_path %>
-
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @product.image.url (:medium) %>
+</p>
 <p>
   <strong>Name:</strong>
   <%= @product.name %>
