@@ -4,5 +4,5 @@ class Product < ActiveRecord::Base
 	validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 	
 	validates :image, presence: true
-	validates :description, presence: true
+	validates :name, :condition, :starting_bid, :location, :quantity, :buy_now_price, :description, presence: true
 end
