@@ -45,5 +45,5 @@
 
 <p>
   <strong>Seller:</strong>
-  <%= @product.user.username %>
+  <%= link_to (@product.user.username), user_path(@product.user_id) %>
 </p>
