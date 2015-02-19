@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-  get 'reviews/index'
+  resources :users, only: [:show]
 
-  get 'reviews/show'
-
-  get 'reviews/new'
-
-  get 'reviews/edit'
 
   devise_for :users
   resources :products
