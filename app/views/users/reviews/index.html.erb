@@ -1,0 +1,19 @@
+<h1>All Reviews for <%= @user.username %></h1>
+<p><%= link_to "New Review", new_user_review_path %></p>
+<% @reviews.each do |review| %>
+	<% if review.rating == "Negative" %>
+		<div class="panel panel-danger">
+	<% else %>
+		<div class="panel panel-primary">
+	<% end %>
+	<div class="panel-heading">
+	<p><%= review.rating %></p>
+	</div>
+	<div class="panel-body">
+	<p>&nbsp;<%= review.description %></p>
+	</div>
+	<div class="panel-footer">
+	<p><%= review.user.username %></p>
+	</div>
+	</div>
+<% end %>

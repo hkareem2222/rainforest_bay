@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
 
    validates :username, presence: true
    validates :username, uniqueness: true
+
+   acts_as_voter
 end
