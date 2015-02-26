@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :reviews, controller: "users/reviews", only: [:index, :new, :create]
   end
-  resources :products
+  resources :products do
+    resources :bids, controller: "products/bids", only: [:index, :new, :create]
+  end
 
   root "products#index"
 

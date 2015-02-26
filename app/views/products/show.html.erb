@@ -19,6 +19,16 @@
 </p>
 
 <p>
+  <strong>Current bid:</strong>
+  <% @product.bids.each do |bid| %>
+    <% while (@product.starting_bid < bid.amount) %>
+      <% @product.starting_bid = bid.amount %>
+    <% end %>
+  <% end %>
+  <%= @product.starting_bid %> <%= link_to "Bid Now", new_product_bid_path(@product) %>
+</p>
+
+<p>
   <strong>Location:</strong>
   <%= @product.location %>
 </p>
