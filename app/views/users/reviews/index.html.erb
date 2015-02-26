@@ -1,5 +1,7 @@
 <h1>All Reviews for <%= @user.username %></h1>
-<p><%= link_to "New Review", new_user_review_path %></p>
+<% if current_user != @user %>
+	<p><%= link_to "New Review", new_user_review_path %></p>
+<% end %>
 <% @reviews.each do |review| %>
 	<% if review.rating == "Negative" %>
 		<div class="panel panel-danger">

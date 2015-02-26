@@ -11,7 +11,7 @@ class Users::ReviewsController < ApplicationController
 
   def create
   	@user = User.find(params[:user_id])
-  	@review = current_user.reviews.build(review_params)
+  	@review = @user.reviews.build(review_params.merge({user_id: current_user.id}))
   	if @review.save
   		redirect_to user_reviews_path
   	else

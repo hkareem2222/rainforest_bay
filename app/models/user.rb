@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
    has_many :products
-   has_many :reviews
+   has_many :reviews, as: :reviewable
+
+   has_many :bids
 
    validates :username, presence: true
    validates :username, uniqueness: true
