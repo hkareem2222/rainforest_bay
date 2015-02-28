@@ -2,11 +2,32 @@
 <% if current_user != @user %>
 	<p><%= link_to "New Review", new_user_review_path %></p>
 <% end %>
+<% positive_rating = 0 %>
+<% negative_rating = 0 %>
+<% neutral_rating = 0 %>
+<% @reviews.each do |review| %> 
+	<% if (review.rating == "Positive") %>
+		<% positive_rating += 1 %>
+	<% end %>
+	<% if (review.rating == "Neutral") %>
+		<% neutral_rating += 1 %>
+	<% end %>
+	<% if (review.rating == "Negative") %>
+		<% negative_rating += 1 %>
+	<% end %>
+<% end %>
+<p>Neutral: <%= neutral_rating %></p>
+<p>Positive: <%= positive_rating %></p>
+<p>Negative: <%= negative_rating %></p>
 <% @reviews.each do |review| %>
 	<% if review.rating == "Negative" %>
 		<div class="panel panel-danger">
-	<% else %>
+	<% end %>
+	<% if review.rating == "Positive" %>
 		<div class="panel panel-primary">
+	<% end %>
+	<% if review.rating == "Neutral" %>
+		<div class="panel panel-success">
 	<% end %>
 	<div class="panel-heading">
 	<p><%= review.rating %></p>

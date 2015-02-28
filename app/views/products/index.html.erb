@@ -1,22 +1,47 @@
-<div class="container">
-<form class="form-inline">
-  <div class="form-group">
-    <input placeholder="Search products" class="form-control">
-    <button class="btn btn-primary">Search</button>
+<div class="container-fluid">
+  <div class="jumbotron">
+    <h1>RainforestBay</h1>
+    <% if !user_signed_in? %>
+      <button class="btn btn-primary intro-links"><%= link_to "Log In", new_user_session_path %></button>
+      <button class="btn btn-primary intro-links"><%= link_to "Sign Up", new_user_registration_path %></button>
+    <% end %>
+    <p>An eBay clone built with Ruby on Rails</p>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for Products here...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
   </div>
-</form>
-<h1>Recently Listed:</h1>
-<% @products.each do |product| %>
-  <div class="box panel panel-info">
-    <%= image_tag product.image.url (:medium), class: "product_image" %>
-    <div class="panel-body">
-      <p><%= link_to product.name, product %></p>
-      <p>Current Bid: $<%= product.starting_bid %></p>
-      <p>Buy it Now: $<%= product.buy_now_price %></p>
-    </div>
+  <div class="page-header">
+    <h1>Featured Items:</h1>
   </div>
-<% end %>
-<h1>Featured Electronics:</h1>
-<h1>Featured Furniture:</h1>
-<h1>More Categories</h1>
+  <div id="products">
+    <% @products.each do |product| %>
+      <div class="box panel panel-default">
+        <%= image_tag product.image.url (:medium), class: "product_image" %>
+        <div class="panel-heading">
+          <p><%= link_to product.name, product %></p>
+        </div>
+        <div class="panel-body">
+          <p>Current Bid: $<%= product.starting_bid %></p>
+          <p>Buy it Now: $<%= product.buy_now_price %></p>
+        </div>
+        <div class="panel-footer">
+          <a href="#">Buy/Bid Now!</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="page-header">
+    <h1>More Categories:</h1>
+  </div>
+  <div id="categories">
+    <ul>
+      <li>Eletronics</li>
+      <li>Home Goods</li>
+      <li>Furniture</li>
+      <li>Etc.</li>
+    </ul>
+  </div>
 </div>
