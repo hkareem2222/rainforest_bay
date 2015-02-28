@@ -17,6 +17,10 @@ class ProductsController < ApplicationController
     @products = current_user.products
   end
 
+  def product_image
+    @product = Product.find(params[:id])
+  end
+
   # GET /products/new
   def new
     @product = current_user.products.build

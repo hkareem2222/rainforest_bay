@@ -3,13 +3,15 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :reviews, controller: "users/reviews", only: [:index, :new, :create]
   end
+
+  get "my_products" => "products#my_products"
+  get "products/:id/product_image" => "products#product_image", :as => "product_image"
+
   resources :products do
     resources :bids, controller: "products/bids", only: [:index, :new, :create]
   end
 
   root "products#index"
-
-  get "my_products" => "products#my_products"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

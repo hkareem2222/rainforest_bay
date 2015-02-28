@@ -1,55 +1,35 @@
 <%= link_to 'Back', products_path %>
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @product.image.url (:medium) %>
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Condition:</strong>
-  <%= @product.condition %>
-</p>
-
-<p>
-  <strong>Current bid:</strong>
-  <% @product.bids.each do |bid| %>
-    <% while (@product.starting_bid < bid.amount) %>
-      <% @product.starting_bid = bid.amount %>
-      <% @product.save %>
-    <% end %>
-  <% end %>
-  <%= @product.starting_bid %> <%= link_to "Bid Now", new_product_bid_path(@product) %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @product.location %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @product.quantity %>
-</p>
-
-<p>
-  <strong>Buy now price:</strong>
-  <%= @product.buy_now_price %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category %>
-</p>
-
-<p>
-  <strong>Seller:</strong>
-  <%= link_to (@product.user.username), user_path(@product.user_id) %>
-</p>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1><%= @product.name %></h1>
+    </div>
+    <div id="product_image">
+      <%= link_to image_tag(@product.image.url (:medium)), product_image_path %>
+    </div>
+    <div class="panel-body">
+      <strong><p>Condition:</strong> <%= @product.condition %></p>
+      <p>
+        <strong>Current bid:</strong>
+        <% @product.bids.each do |bid| %>
+          <% while (@product.starting_bid < bid.amount) %>
+            <% @product.starting_bid = bid.amount %>
+            <% @product.save %>
+          <% end %>
+        <% end %>
+        <%= @product.starting_bid %> <%= link_to "Bid Now", new_product_bid_path(@product) %>
+      </p>
+      <strong><p>Buy Now Price:</strong> <%= @product.buy_now_price %></p>
+      <strong><p>Location:</strong> <%= @product.location %></p>
+      <strong><p>Quantity:</strong> <%= @product.quantity %></p>
+      <strong><p>Category:</strong> <%= @product.category %></p>
+    </div>
+    <div id="description" class="panel-footer">
+      <div class="page-header">
+        <h2>Item Description</h2>
+      </div>
+      <p><%= @product.description %></p>
+      <p>Seller info: <%= link_to (@product.user.username), user_path(@product.user_id) %></p>
+    </div>
+  </div>
+</div>
