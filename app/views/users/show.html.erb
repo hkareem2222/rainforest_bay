@@ -1,7 +1,10 @@
-<p><%= @user.username %>'s page</p>
-<p>Member since: <%= @user.created_at %></p>
-<p>Featured items for sale!</p>
-<p>Comment: Display 10 recent items, and provide a link to view all</p>
+<div class="container">
+	<div class="page-header">
+		<h1><%= @user.username %>'s page</h1>
+	</div>
+<p><strong>Member since:</strong> <%= @user.created_at %></p>
+<p><%= link_to "See all products from this seller", user_products_path %></p>
+
 <p>Reviews</p>
 <p><%= link_to "Show Reviews", 	user_reviews_path(params[:id]) %></p>
 <% @user.reviews.each do |review| %>
@@ -10,3 +13,4 @@
 	<p><%= review.user.username %></p>
 <% end %>
 <p>Comment: Show 10 recent reviews, and provide a link to view all</p>
+</div>
