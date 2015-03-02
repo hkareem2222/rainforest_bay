@@ -1,3 +1,7 @@
 <h1>Place bids for <%= @product.name %></h1>
 
 <p><%= link_to "New Bid", new_product_bid_path %></p>
+
+<% @product.bids.each do |bid| %>
+	<p><%= bid.amount %></p>
+<% end %>
