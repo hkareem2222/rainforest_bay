@@ -4,6 +4,20 @@ class Users::ReviewsController < ApplicationController
   def index
   	@user = User.find(params[:user_id])
   	@reviews = @user.reviews
+    @positive_rating = 0
+    @negative_rating = 0
+    @neutral_rating = 0
+    @reviews.each do |review|
+      if (review.rating == "Positive")
+        @positive_rating += 1
+      end
+      if (review.rating == "Neutral")
+        @neutral_rating += 1
+      end
+      if (review.rating == "Negative")
+        @negative_rating += 1
+      end
+    end
   end
 
   def new

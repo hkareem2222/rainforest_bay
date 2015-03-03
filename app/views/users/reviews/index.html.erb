@@ -1,24 +1,24 @@
-<h1>All Reviews for <%= @user.username %></h1>
+<div class="container">
+	<div class="page-header">
+		<h1>All Reviews for <%= @user.username %></h1>
+	</div>
 <% if current_user != @user %>
 	<p><%= link_to "New Review", new_user_review_path %></p>
 <% end %>
-<% positive_rating = 0 %>
-<% negative_rating = 0 %>
-<% neutral_rating = 0 %>
-<% @reviews.each do |review| %> 
-	<% if (review.rating == "Positive") %>
-		<% positive_rating += 1 %>
-	<% end %>
-	<% if (review.rating == "Neutral") %>
-		<% neutral_rating += 1 %>
-	<% end %>
-	<% if (review.rating == "Negative") %>
-		<% negative_rating += 1 %>
-	<% end %>
-<% end %>
-<p>Neutral: <%= neutral_rating %></p>
-<p>Positive: <%= positive_rating %></p>
-<p>Negative: <%= negative_rating %></p>
+<div class="panel panel-default box">
+	<div class="panel-heading">
+		12 month total reviews
+	</div>
+		<div class="panel-footer">
+			<p><strong>Positive:</strong> <%= @positive_rating %></p>
+		</div>
+		<div class="panel-footer">
+			<p><strong>Neutral:</strong> <%= @neutral_rating %></p>
+		</div>
+		<div class="panel-footer">
+			<p><strong>Negative:</strong> <%= @negative_rating %></p>
+		</div>
+</div>
 <% @reviews.each do |review| %>
 	<% if review.rating == "Negative" %>
 		<div class="panel panel-danger">
@@ -40,3 +40,4 @@
 	</div>
 	</div>
 <% end %>
+</div>
