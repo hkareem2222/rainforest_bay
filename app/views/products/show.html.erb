@@ -1,5 +1,5 @@
-<%= link_to 'Back', products_path %>
 <div class="container">
+  <%= link_to 'Back', products_path %>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h1><%= @product.name %></h1>
@@ -11,15 +11,9 @@
       <strong><p>Condition:</strong> <%= @product.condition %></p>
       <p>
         <strong>Current bid:</strong>
-        <% @product.bids.each do |bid| %>
-          <% while (@product.starting_bid < bid.amount) %>
-            <% @product.starting_bid = bid.amount %>
-            <% @product.save %>
-          <% end %>
-        <% end %>
-        <%= @product.starting_bid %> <%= link_to "Bid Now", new_product_bid_path(@product) %>
+        $<%= @product.starting_bid %> <%= link_to "Bid Now", new_product_bid_path(@product) %>
       </p>
-      <strong><p>Buy Now Price:</strong> <%= @product.buy_now_price %> <%= link_to "Buy Now", checkout_path(@product) %></p>
+      <strong><p>Buy Now Price:</strong> $<%= @product.buy_now_price %> <%= link_to "Buy Now", checkout_path(@product) %></p>
       <strong><p>Location:</strong> <%= @product.location %></p>
       <strong><p>Quantity:</strong> <%= @product.quantity %></p>
       <strong><p>Category:</strong> <%= @product.category %></p>

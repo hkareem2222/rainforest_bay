@@ -11,6 +11,13 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @product = Product.find(params[:id])
+    @product.bids.each do |bid|
+      while (@product.starting_bid < bid.amount)
+        @product.starting_bid = bid.amount
+        @product.save
+      end
+    end
   end
 
   def checkout
