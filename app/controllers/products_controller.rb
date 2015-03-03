@@ -13,6 +13,10 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def checkout
+    @product = Product.find(params[:id])
+  end
+
   def my_products
     @products = current_user.products
   end

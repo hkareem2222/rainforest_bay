@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="page-header">
+		<h1>Checkout Page</h1>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-bordered">
+		  <thead>
+		    <tr>
+		      <th>Image</th>
+		      <th>Name</th>
+		      <th>Condition</th>
+		      <th>Location</th>
+		      <th>Quantity</th>
+		      <th>Buy now price</th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <tr>
+		      <td><%= image_tag @product.image.url (:thumb) %></td>
+		      <td><%= @product.name%></td>
+		      <td><%= @product.condition %></td>
+		      <td><%= @product.location %></td>
+		      <td><%= @product.quantity %></td>
+		      <td><%= @product.buy_now_price %></td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+	<button class="btn btn-primary pull-right">Checkout</button>
+</div>

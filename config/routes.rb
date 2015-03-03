@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get "users/:id/user_products" => "users#user_products", :as => "user_products"
 
+  get "products/:id/checkout" => "products#checkout", :as => "checkout"
   get "my_products" => "products#my_products"
   get "products/:id/product_image" => "products#product_image", :as => "product_image"
 
