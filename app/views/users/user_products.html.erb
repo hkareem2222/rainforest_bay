@@ -1,22 +1,27 @@
 <div class="container">
-	<div class="page-header">
-		<h1>All Items sold by <%= @user.username %></h1>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h1>All Items sold by <%= @user.username %></h1>
+		</div>
+		<div class="panel-body">
+	    <% @user.products.each do |product| %>
+	      <div class="box panel panel-default">
+	        <%= image_tag product.image.url (:medium), class: "product_image" %>
+	        <div class="panel-heading">
+	          <p><%= link_to product.name, product %></p>
+	        </div>
+	        <div class="panel-body">
+	          <p>Current Bid: $<%= product.starting_bid %></p>
+	          <p>Buy it Now: $<%= product.buy_now_price %></p>
+	        </div>
+	        <div class="panel-footer">
+	          <a href="#">Buy/Bid Now!</a>
+	        </div>
+	      </div>
+	    <% end %>
+	  </div>
+	  <div class="panel-footer">
+	  	<%= link_to 'Back', user_path(@user) %>
+	  </div>
 	</div>
-	<div id="products">
-    <% @user.products.each do |product| %>
-      <div class="box panel panel-default">
-        <%= image_tag product.image.url (:medium), class: "product_image" %>
-        <div class="panel-heading">
-          <p><%= link_to product.name, product %></p>
-        </div>
-        <div class="panel-body">
-          <p>Current Bid: $<%= product.starting_bid %></p>
-          <p>Buy it Now: $<%= product.buy_now_price %></p>
-        </div>
-        <div class="panel-footer">
-          <a href="#">Buy/Bid Now!</a>
-        </div>
-      </div>
-    <% end %>
-  </div>
 </div>

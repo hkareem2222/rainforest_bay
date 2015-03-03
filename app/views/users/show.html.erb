@@ -1,16 +1,12 @@
 <div class="container">
-	<div class="page-header">
-		<h1><%= @user.username %>'s page</h1>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h1><%= @user.username %>'s page</h1>
+		</div>
+		<div class="panel-body">
+			<p><strong>Member since:</strong> <%= @user.created_at %></p>
+			<p><%= link_to "See all products from this seller", user_products_path %></p>
+			<p><%= link_to "Show Reviews", 	user_reviews_path(params[:id]) %></p>
+		</div>
 	</div>
-<p><strong>Member since:</strong> <%= @user.created_at %></p>
-<p><%= link_to "See all products from this seller", user_products_path %></p>
-
-<p>Reviews</p>
-<p><%= link_to "Show Reviews", 	user_reviews_path(params[:id]) %></p>
-<% @user.reviews.each do |review| %>
-	<p></p><%= review.rating %></p>
-	<p><%= review.description %></p>
-	<p><%= review.user.username %></p>
-<% end %>
-<p>Comment: Show 10 recent reviews, and provide a link to view all</p>
 </div>
